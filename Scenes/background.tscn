@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://b6ne53jo1nu87"]
+
+[ext_resource type="Texture2D" uid="uid://0ueqar2wegc" path="res://Textures/SpaceInvaders_Background.png" id="1_d70gw"]
+[ext_resource type="Texture2D" uid="uid://c3slgoqa0o4of" path="res://Textures/SpaceInvaders_BackgroundBuildings.png" id="2_rqupw"]
+[ext_resource type="Texture2D" uid="uid://busd3umcod6x1" path="res://Textures/SpaceInvaders_BackgroundFloor.png" id="3_xc7xv"]
+
+[node name="PanelContainer" type="PanelContainer"]
+offset_right = 601.0
+offset_bottom = 912.0
+
+[node name="sky" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_d70gw")
+stretch_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = -1
+
+[node name="Control" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_rqupw")
+stretch_mode = 1
+
+[node name="floor" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_xc7xv")
+stretch_mode = 1
+
+[node name="floor2" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_xc7xv")
+stretch_mode = 1
