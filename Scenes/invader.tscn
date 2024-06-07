@@ -1,20 +1,45 @@
-[gd_scene load_steps=3 format=3 uid="uid://b1awdbamtupdn"]
+[gd_scene load_steps=7 format=3 uid="uid://b1awdbamtupdn"]
 
 [ext_resource type="Texture2D" uid="uid://nfix0qul73js" path="res://Textures/invader_frame.png" id="1_3o8r1"]
+[ext_resource type="Script" path="res://Scenes/invader.gd" id="1_d7xfr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j5kpb"]
+atlas = ExtResource("1_3o8r1")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fjwkt"]
+atlas = ExtResource("1_3o8r1")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ejybq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j5kpb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fjwkt")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_v1ffe"]
 radius = 6.0
 
-[node name="Node2D" type="Node2D"]
+[node name="Invader" type="Node2D"]
+scale = Vector2(4, 4)
+script = ExtResource("1_d7xfr")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_3o8r1")
-region_enabled = true
-region_rect = Rect2(3, 4, 11, 8)
+[node name="animated_sprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(-0.5, 0)
+sprite_frames = SubResource("SpriteFrames_ejybq")
+frame_progress = 0.392542
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 3
-collision_mask = 3
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_v1ffe")
