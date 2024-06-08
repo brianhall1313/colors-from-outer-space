@@ -7,7 +7,7 @@
 size = Vector2(36, 74)
 
 [node name="shot" type="Node2D"]
-scale = Vector2(0.25, 0.25)
+scale = Vector2(0.2, 0.2)
 script = ExtResource("1_dp3nk")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -20,4 +20,8 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_6mbfo")
 
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(0, 32)
+
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

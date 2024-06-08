@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://ehdus4fu6xj5"]
+[gd_scene load_steps=7 format=3 uid="uid://ehdus4fu6xj5"]
 
 [ext_resource type="PackedScene" uid="uid://cqyjep2qql8da" path="res://Scenes/player.tscn" id="1_47cwr"]
 [ext_resource type="PackedScene" uid="uid://b6ne53jo1nu87" path="res://Scenes/background.tscn" id="1_b2fkt"]
@@ -8,6 +8,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0rr08"]
 size = Vector2(29, 917)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_43te5"]
+size = Vector2(689, 20)
+
 [node name="field" type="Node2D"]
 script = ExtResource("1_bosnr")
 
@@ -15,6 +18,8 @@ script = ExtResource("1_bosnr")
 script = ExtResource("2_bh4ul")
 
 [node name="background" parent="." instance=ExtResource("1_b2fkt")]
+offset_left = -152.0
+offset_right = 776.0
 
 [node name="enemies" type="Node" parent="."]
 
@@ -29,16 +34,25 @@ position = Vector2(64, 432)
 shape = SubResource("RectangleShape2D_0rr08")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="border"]
-position = Vector2(696, 432)
+position = Vector2(800, 424)
 shape = SubResource("RectangleShape2D_0rr08")
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 8.0
+offset_bottom = 8.0
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0
 
+[node name="landing_zone" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="landing_zone"]
+position = Vector2(351.5, 800)
+shape = SubResource("RectangleShape2D_43te5")
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="area_entered" from="landing_zone" to="." method="_on_landing_zone_area_entered"]

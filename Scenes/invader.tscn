@@ -1,7 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://b1awdbamtupdn"]
+[gd_scene load_steps=15 format=3 uid="uid://b1awdbamtupdn"]
 
 [ext_resource type="Texture2D" uid="uid://nfix0qul73js" path="res://Textures/invader_frame.png" id="1_3o8r1"]
 [ext_resource type="Script" path="res://Scenes/invader.gd" id="1_d7xfr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t6dcc"]
+atlas = ExtResource("1_3o8r1")
+region = Rect2(0, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6n1qi"]
+atlas = ExtResource("1_3o8r1")
+region = Rect2(16, 48, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j5kpb"]
 atlas = ExtResource("1_3o8r1")
@@ -11,8 +19,43 @@ region = Rect2(0, 0, 16, 16)
 atlas = ExtResource("1_3o8r1")
 region = Rect2(16, 0, 16, 16)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_1fran"]
+atlas = ExtResource("1_3o8r1")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ypbkc"]
+atlas = ExtResource("1_3o8r1")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_syemt"]
+atlas = ExtResource("1_3o8r1")
+region = Rect2(0, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qjtpe"]
+atlas = ExtResource("1_3o8r1")
+region = Rect2(16, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mo35d"]
+atlas = ExtResource("1_3o8r1")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hgftl"]
+atlas = ExtResource("1_3o8r1")
+region = Rect2(16, 16, 16, 16)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_ejybq"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t6dcc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6n1qi")
+}],
+"loop": true,
+"name": &"buddy",
+"speed": 2.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_j5kpb")
@@ -23,19 +66,52 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1fran")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ypbkc")
+}],
+"loop": true,
+"name": &"dude",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_syemt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qjtpe")
+}],
+"loop": true,
+"name": &"friend",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mo35d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hgftl")
+}],
+"loop": true,
+"name": &"guy",
+"speed": 2.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_v1ffe"]
-radius = 6.0
+radius = 24.0
 
 [node name="Invader" type="Node2D"]
-scale = Vector2(4, 4)
 script = ExtResource("1_d7xfr")
 
 [node name="animated_sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(-0.5, 0)
+scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_ejybq")
-frame_progress = 0.392542
+frame_progress = 0.853668
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 3
@@ -43,3 +119,17 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_v1ffe")
+
+[node name="color_blind" type="PanelContainer" parent="."]
+visible = false
+offset_left = -16.0
+offset_top = -33.0
+offset_right = 16.0
+offset_bottom = -20.0
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="color_blind"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "white"
+horizontal_alignment = 1

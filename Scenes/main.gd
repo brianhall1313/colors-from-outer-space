@@ -25,3 +25,7 @@ func _on_how_to_play_button_back_button_up():
 func _on_credits_back_button_up():
 	$Control/credits.hide()
 
+
+
+func _on_check_button_toggled(toggled_on):
+		Global.color_blind_mode = toggled_on
