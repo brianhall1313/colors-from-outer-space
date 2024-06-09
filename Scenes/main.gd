@@ -1,6 +1,6 @@
 extends Node2D
 
-
+@onready var title_bar=$Control/VBoxContainer/title_bar
 
 
 func _on_quit_button_up():

@@ -19,10 +19,11 @@ const STEP:int = 64
 
 
 var next_bonus_spawn:String=""
+var next_bonus_position:Vector2
 var bonus_list:Array=["repair","rainbow_beam"]
 var invader_score:int=100
 var points:int = 0
-var default_time:float=2.0
+var default_time:float=2.5
 var default_next:String="right"
 var level:int = 0
 var check_win:bool = false
@@ -66,10 +67,12 @@ func _process(_delta):
 func connect_signal_bus():
 	GlobalSignalBus.connect("shoot",spawn_beam)
 	GlobalSignalBus.connect("score",score)
+	GlobalSignalBus.connect("repair",repair)
+	GlobalSignalBus.connect("rainbow",rainbow)
 	GlobalSignalBus.connect("update_ui",update_ui)
 	GlobalSignalBus.connect("invader_shoot",spawn_invader_shot)
 	GlobalSignalBus.connect("invader_death",on_invader_death)
-	GlobalSignalBus.connect("player_damage",update_ui)
+	GlobalSignalBus.connect("player_damage",player_damage)
 	GlobalSignalBus.connect("player_death",player_death)
 	GlobalSignalBus.connect("explosion",spawn_explosion)
 	GlobalSignalBus.connect("ufo_death",ufo_death)
@@ -128,7 +131,7 @@ func invader_progress():
 		count = 0
 		direction = "down"
 		if timer.wait_time >.3:
-			timer.wait_time-=.2
+			timer.wait_time*=(.80-(.01*level))
 		if next == "left":
 			next = "right"
 		else:
@@ -155,9 +158,11 @@ func player_death():
 	game_over()
 
 
-func ufo_death():
+func ufo_death(death_position):
 	var pick=bonus_list.pick_random()
 	next_bonus_spawn = pick
+	next_bonus_position=death_position
+	spawn_explosion(death_position,"white")
 
 
 
@@ -166,8 +171,7 @@ func ufo_death():
 
 func spawn_bonus(pick:String):
 		var new = bonuses[pick].instantiate()
-		bonus_spawn.progress_ratio=randf()
-		new.position=bonus_spawn.position
+		new.position=next_bonus_position
 		add_child(new)
 
 
@@ -178,11 +182,14 @@ func spawn_invader(pos:Vector2,color:String):
 	new.change_color(color)
 
 
-func spawn_invader_shot(shot_position:Vector2):
+func spawn_invader_shot(shot_position:Vector2,color:String):
 	if Global.current_state=="play":
 		var new = invader_shot.instantiate()
 		new.position = shot_position
 		add_child(new)
+		new.change_color(color)
+		$invader_shot.play()
+		
 
 
 func spawn_explosion(explosion_position,color):
@@ -190,6 +197,7 @@ func spawn_explosion(explosion_position,color):
 	new.position=explosion_position
 	add_child(new)
 	new.modulate=Color(color)
+	$explosion.play()
 
 
 
@@ -198,6 +206,7 @@ func spawn_beam(beam_color):
 	add_child(new_shot)
 	new_shot.position = player.position
 	new_shot.color_change(beam_color)
+	$player_shot.play()
 
 
 func spawn_ufo():
@@ -205,7 +214,18 @@ func spawn_ufo():
 	var new=ufo.instantiate()
 	add_child(new)
 	new.spawn(ufo_spawn[pick].position,pick)
-	ufo_delay.wait_time=randf_range(5,20) 
+	var minimum:int=10+level
+	var maximum:int=20+level
+	ufo_delay.wait_time=randf_range(minimum,maximum)
+	$ufo.play()
+
+
+func repair():
+	$repair.play()
+	
+
+func rainbow():
+	$rainbow.play()
 
 
 
@@ -241,3 +261,7 @@ func _on_input_toggle_pause():
 
 func _on_ufo_delay_timeout():
 	spawn_ufo()
+
+func player_damage():
+	update_ui()
+	$player_damage.play()

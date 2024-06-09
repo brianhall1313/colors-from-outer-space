@@ -1,7 +1,7 @@
 extends Node2D
 
 const SPEED: float = 700.0
-
+@onready var rainbow=preload("res://Resources/rainbow_beam.tres")
 var color:String = "red"
 
 # Called when the node enters the scene tree for the first time.
@@ -18,6 +18,10 @@ func _process(delta):
 func color_change(new:String):
 	color = new
 	modulate = Color(new)
+	if color=="white":
+		$Sprite2D.material=rainbow
+	else:
+		$Sprite2D.material=null
 
 
 func _on_area_2d_area_entered(area):

@@ -4,6 +4,7 @@ const SPEED:float = 700.0
 const TIME:float = 10.0
 @onready var player_color = $player_color
 @onready var rainbow_beam_timer=$rainbow_beam_timer
+@onready var rainbow=preload("res://Resources/rainbow_beam.tres")
 var default_beam: String = "red"
 var beam_color: String = default_beam
 var previous_color:String = ""
@@ -52,11 +53,18 @@ func _input(event):
 		
 
 
-func change_color(new_color:String):
-	previous_color=beam_color
-	beam_color = new_color
-	GlobalSignalBus.update_ui.emit()
-	player_color.color = Color(new_color)
+func change_color(new_color:String,restore=false):
+	if beam_color != "white" or restore:
+		previous_color=beam_color
+		beam_color = new_color
+		GlobalSignalBus.update_ui.emit()
+		player_color.color = Color(new_color)
+		if new_color=="white":
+			$Sprite2D.material=rainbow
+		else:
+			$Sprite2D.material=null
+
+
 
 
 func activate_rainbow_beam():
@@ -71,7 +79,7 @@ func get_hit():
 	current_health-=1
 	GlobalSignalBus.player_damage.emit()
 	if current_health<=0:
-		GlobalSignalBus.explosion.emit(position)
+		GlobalSignalBus.explosion.emit(position,beam_color)
 		GlobalSignalBus.player_death.emit()
 		queue_free()
 		
@@ -84,5 +92,5 @@ func repair():
 
 
 func _on_rainbow_beam_timer_timeout():
-	beam_color = previous_color
+	change_color(previous_color,true)
 	rainbow_beam_timer.stop()

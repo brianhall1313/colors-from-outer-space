@@ -1,10 +1,18 @@
-[gd_scene load_steps=9 format=3 uid="uid://ehdus4fu6xj5"]
+[gd_scene load_steps=17 format=3 uid="uid://ehdus4fu6xj5"]
 
 [ext_resource type="PackedScene" uid="uid://cqyjep2qql8da" path="res://Scenes/player.tscn" id="1_47cwr"]
 [ext_resource type="PackedScene" uid="uid://b6ne53jo1nu87" path="res://Scenes/background.tscn" id="1_b2fkt"]
 [ext_resource type="Script" path="res://Scenes/field.gd" id="1_bosnr"]
 [ext_resource type="Script" path="res://Scenes/input.gd" id="2_bh4ul"]
 [ext_resource type="PackedScene" uid="uid://blbujuc5fp331" path="res://Scenes/ui.tscn" id="5_t46m2"]
+[ext_resource type="AudioStream" uid="uid://cdaxkiwuxn46c" path="res://Sound/Voxel Revolution-by-Kevin-Macleod.wav" id="6_27uhf"]
+[ext_resource type="AudioStream" uid="uid://bamjnw6s8pfge" path="res://Sound/8-bit-laser-151672.mp3" id="7_jxrt0"]
+[ext_resource type="AudioStream" uid="uid://dvvnnrxs37lqa" path="res://Sound/laser-45816.mp3" id="8_ja2n4"]
+[ext_resource type="AudioStream" uid="uid://bnk5g1yhfdfiw" path="res://Sound/retro-game-sfx-explosion-104422.mp3" id="9_74wwp"]
+[ext_resource type="AudioStream" uid="uid://b5kwyq0nd7idh" path="res://Sound/080998_bullet-hit-39870.mp3" id="10_64kfw"]
+[ext_resource type="AudioStream" uid="uid://cnlpvnq1w34dq" path="res://Sound/coin-upaif-14631.mp3" id="10_aaphb"]
+[ext_resource type="AudioStream" uid="uid://bd43xaogghev0" path="res://Sound/90s-game-ui-14-185107.mp3" id="11_bjjg5"]
+[ext_resource type="AudioStream" uid="uid://c8gy7ptocw1ov" path="res://Sound/ufo-flies-away-101315.mp3" id="12_ieum2"]
 
 [sub_resource type="Curve2D" id="Curve2D_7fwal"]
 _data = {
@@ -74,6 +82,33 @@ position = Vector2(-48, 32)
 
 [node name="move_left" type="Marker2D" parent="."]
 position = Vector2(752, 32)
+
+[node name="bgm" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_27uhf")
+volume_db = -5.0
+autoplay = true
+
+[node name="invader_shot" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_jxrt0")
+
+[node name="player_shot" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_ja2n4")
+volume_db = -10.0
+
+[node name="explosion" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_74wwp")
+
+[node name="player_damage" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_64kfw")
+
+[node name="repair" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_aaphb")
+
+[node name="rainbow" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_bjjg5")
+
+[node name="ufo" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_ieum2")
 
 [connection signal="toggle_pause" from="input" to="." method="_on_input_toggle_pause"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

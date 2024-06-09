@@ -1,7 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://dts22loe15w4w"]
+[gd_scene load_steps=8 format=3 uid="uid://dts22loe15w4w"]
 
 [ext_resource type="Script" path="res://Scenes/main.gd" id="1_nmyij"]
 [ext_resource type="Texture2D" uid="uid://0ueqar2wegc" path="res://Textures/SpaceInvaders_Background.png" id="2_fkgvv"]
+[ext_resource type="Theme" uid="uid://buf711m5wbp58" path="res://Resources/space.tres" id="2_l468g"]
+[ext_resource type="FontFile" uid="uid://dimwslcuyavan" path="res://Resources/Tiny5-Regular.ttf" id="4_0gjm2"]
+[ext_resource type="Material" uid="uid://d0p11dbps25br" path="res://Resources/rainbow_beam.tres" id="4_w274j"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kromj"]
+bg_color = Color(0.451019, 0.548877, 0.87556, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4fwpv"]
 bg_color = Color(0.103744, 0.103744, 0.103743, 1)
@@ -18,11 +24,14 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme = ExtResource("2_l468g")
 
 [node name="PanelContainer" type="PanelContainer" parent="Control"]
 layout_mode = 0
-offset_right = 776.0
+offset_left = -31.0
+offset_right = 715.0
 offset_bottom = 1015.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_kromj")
 
 [node name="TextureRect" type="TextureRect" parent="Control/PanelContainer"]
 layout_mode = 2
@@ -38,14 +47,14 @@ offset_bottom = 911.0
 custom_minimum_size = Vector2(0, 175)
 layout_mode = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="Control/VBoxContainer"]
+[node name="title_bar" type="PanelContainer" parent="Control/VBoxContainer"]
+material = ExtResource("4_w274j")
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="Control/VBoxContainer/PanelContainer"]
+[node name="Label" type="Label" parent="Control/VBoxContainer/title_bar"]
 layout_mode = 2
-
-[node name="Label" type="Label" parent="Control/VBoxContainer/PanelContainer"]
-layout_mode = 2
+theme = ExtResource("2_l468g")
+theme_override_fonts/font = ExtResource("4_0gjm2")
 theme_override_font_sizes/font_size = 45
 text = "Colors From Outer Space!"
 horizontal_alignment = 1
@@ -90,8 +99,8 @@ text = "Color Blind Mode"
 [node name="how to play" type="PanelContainer" parent="Control"]
 visible = false
 layout_mode = 0
-offset_right = 600.0
-offset_bottom = 904.0
+offset_right = 712.0
+offset_bottom = 1000.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_4fwpv")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/how to play"]
@@ -121,8 +130,8 @@ text = "Back"
 [node name="credits" type="PanelContainer" parent="Control"]
 visible = false
 layout_mode = 0
-offset_right = 592.0
-offset_bottom = 920.0
+offset_right = 704.0
+offset_bottom = 1000.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_4fwpv")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/credits"]
@@ -142,11 +151,12 @@ text = "Made for Mini Jam 160:
  Light
 Limitation:
 Speed is key
-Designer/Programmer
+Designer/Programmer/Some Assets
 Brian Hall
 https://pr0t34n.itch.io/
 Assets:
-
+https://sumo-studios.itch.io/
+https://comp3interactive.itch.io/
 "
 horizontal_alignment = 1
 

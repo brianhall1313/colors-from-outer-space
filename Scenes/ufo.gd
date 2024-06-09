@@ -16,7 +16,7 @@ func _process(delta):
 			position.x += delta*SPEED
 		elif direction=="left":
 			position.x -= delta*SPEED
-	if position.x<-200 or position.x>1000:
+	if position.x<-500 or position.x>1000:
 		queue_free()
 
 
@@ -28,5 +28,5 @@ func spawn(new_position:Vector2,new_direction:String):
 func get_hit(color):
 	GlobalSignalBus.score.emit(point_value)
 	GlobalSignalBus.explosion.emit(position,color)
-	GlobalSignalBus.ufo_death.emit()
+	GlobalSignalBus.ufo_death.emit(position)
 	queue_free()

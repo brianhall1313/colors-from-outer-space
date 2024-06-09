@@ -1,0 +1,46 @@
+[gd_resource type="Theme" load_steps=8 format=3 uid="uid://buf711m5wbp58"]
+
+[ext_resource type="Texture2D" uid="uid://b37epf3554hh6" path="res://Textures/SpaceInvaders_Borders.png" id="1_od4kw"]
+[ext_resource type="FontFile" uid="uid://dimwslcuyavan" path="res://Resources/Tiny5-Regular.ttf" id="1_qttpj"]
+[ext_resource type="Texture2D" uid="uid://crxxv4xjv575" path="res://Textures/buttons.png" id="2_f3f8q"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rpb65"]
+texture = ExtResource("2_f3f8q")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+region_rect = Rect2(102, 0, 34, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xty0n"]
+texture = ExtResource("2_f3f8q")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+region_rect = Rect2(102, 32, 34, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yilfd"]
+texture = ExtResource("2_f3f8q")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+region_rect = Rect2(68, 47, 35, 17)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_m5asx"]
+texture = ExtResource("1_od4kw")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+
+[resource]
+Button/fonts/font = ExtResource("1_qttpj")
+Button/styles/disabled = null
+Button/styles/focus = null
+Button/styles/hover = SubResource("StyleBoxTexture_rpb65")
+Button/styles/normal = SubResource("StyleBoxTexture_xty0n")
+Button/styles/pressed = SubResource("StyleBoxTexture_yilfd")
+Label/fonts/font = ExtResource("1_qttpj")
+PanelContainer/styles/panel = SubResource("StyleBoxTexture_m5asx")

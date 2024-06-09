@@ -14,6 +14,7 @@ var maximum:float=45
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	animated_sprite.animation=sprite_list.pick_random()
+	change_color("blue")
 	animated_sprite.play()
 	attack_timer.wait_time=randf_range(minimum,maximum)
 	attack_timer.start()
@@ -70,4 +71,4 @@ func pause():
 
 func _on_attack_timer_timeout():
 	attack_timer.wait_time=randf_range(minimum,maximum)
-	GlobalSignalBus.invader_shoot.emit(self.position)
+	GlobalSignalBus.invader_shoot.emit(self.position,self.color)
