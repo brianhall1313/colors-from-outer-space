@@ -1,0 +1,134 @@
+[gd_scene load_steps=6 format=3 uid="uid://blbujuc5fp331"]
+
+[ext_resource type="Script" path="res://Scenes/UI.gd" id="1_gu6jw"]
+[ext_resource type="Texture2D" uid="uid://b37epf3554hh6" path="res://Textures/SpaceInvaders_Borders.png" id="2_tbnab"]
+[ext_resource type="Texture2D" uid="uid://cq7npoe6f4f65" path="res://Textures/SpaceInvaders_Health.png" id="3_dxvvj"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_goasy"]
+texture = ExtResource("2_tbnab")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ar3pg"]
+atlas = ExtResource("3_dxvvj")
+region = Rect2(1, 83, 30, 9)
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 8.0
+offset_bottom = 8.0
+script = ExtResource("1_gu6jw")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_top = 880.0
+offset_right = 688.0
+offset_bottom = 984.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_goasy")
+metadata/_edit_group_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+
+[node name="health_display" type="TextureRect" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_ar3pg")
+expand_mode = 3
+
+[node name="Label2" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Color Charge"
+
+[node name="color" type="ColorRect" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Points"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="points" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0"
+horizontal_alignment = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Control3" type="Control" parent="PanelContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 11
+text = "1/Z (red)"
+horizontal_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="PanelContainer/VBoxContainer/HBoxContainer2/VBoxContainer"]
+custom_minimum_size = Vector2(50, 15)
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(0.961629, 0, 0.140176, 1)
+
+[node name="Control" type="Control" parent="PanelContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer2/VBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 11
+text = "2/X (blue)"
+horizontal_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="PanelContainer/VBoxContainer/HBoxContainer2/VBoxContainer2"]
+custom_minimum_size = Vector2(50, 15)
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(0.0955249, 0.138952, 0.85301, 1)
+
+[node name="Control2" type="Control" parent="PanelContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer2/VBoxContainer3"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 11
+text = "3/C (yellow)"
+horizontal_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="PanelContainer/VBoxContainer/HBoxContainer2/VBoxContainer3"]
+custom_minimum_size = Vector2(50, 15)
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(0.934474, 0.882683, 0.0923566, 1)
+
+[node name="Control4" type="Control" parent="PanelContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3

@@ -5,8 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://busd3umcod6x1" path="res://Textures/SpaceInvaders_BackgroundFloor.png" id="3_xc7xv"]
 
 [node name="PanelContainer" type="PanelContainer"]
-offset_right = 601.0
-offset_bottom = 912.0
+offset_right = 720.0
+offset_bottom = 1024.0
 
 [node name="sky" type="TextureRect" parent="."]
 layout_mode = 2
@@ -27,6 +27,11 @@ texture = ExtResource("2_rqupw")
 stretch_mode = 1
 
 [node name="floor" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_xc7xv")
+stretch_mode = 1
+
+[node name="floor3" type="TextureRect" parent="VBoxContainer"]
 layout_mode = 2
 texture = ExtResource("3_xc7xv")
 stretch_mode = 1

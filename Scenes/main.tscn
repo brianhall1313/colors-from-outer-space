@@ -22,7 +22,7 @@ size_flags_vertical = 3
 [node name="PanelContainer" type="PanelContainer" parent="Control"]
 layout_mode = 0
 offset_right = 776.0
-offset_bottom = 912.0
+offset_bottom = 1015.0
 
 [node name="TextureRect" type="TextureRect" parent="Control/PanelContainer"]
 layout_mode = 2

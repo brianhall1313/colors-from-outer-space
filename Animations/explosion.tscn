@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://cxk5qo7ssjdr8"]
+
+[ext_resource type="Texture2D" uid="uid://nfix0qul73js" path="res://Textures/invader_frame.png" id="1_ie52o"]
+[ext_resource type="Script" path="res://Animations/explosion.gd" id="2_myukx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o1cdy"]
+atlas = ExtResource("1_ie52o")
+region = Rect2(32, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_22jwc"]
+atlas = ExtResource("1_ie52o")
+region = Rect2(32, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qdgyt"]
+atlas = ExtResource("1_ie52o")
+region = Rect2(32, 64, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pvs8l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o1cdy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_22jwc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qdgyt")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[node name="Explosion" type="AnimatedSprite2D"]
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_pvs8l")
+frame_progress = 0.78063
+script = ExtResource("2_myukx")
+
+[connection signal="animation_looped" from="." to="." method="_on_animation_looped"]

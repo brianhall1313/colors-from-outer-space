@@ -111,7 +111,7 @@ script = ExtResource("1_d7xfr")
 position = Vector2(-0.5, 0)
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_ejybq")
-frame_progress = 0.853668
+frame_progress = 0.619815
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 3
@@ -133,3 +133,7 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 10
 text = "white"
 horizontal_alignment = 1
+
+[node name="attack_timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="attack_timer" to="." method="_on_attack_timer_timeout"]
