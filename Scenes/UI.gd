@@ -44,7 +44,29 @@ func game_over(points:int):
 func message_received(message:String):
 	system_message.text=message
 	toggle_system_message()
-	message_timer.start()
+	#message_timer.start()
+	var tween = get_tree().create_tween()
+	var move_range:int = 100
+	var mid_x = system_message.position.x
+	var start_x = system_message.position.x - move_range
+	var end_x = system_message.position.x + move_range
+	tween.set_parallel(true)
+	tween.tween_property(system_message, "position:x", mid_x, 1).from(start_x)
+	tween.tween_property(system_message,"modulate",Color(1,1,1,1),1).from(Color(1,1,1,0))
+	tween.set_parallel(false)
+	tween.tween_interval(2)
+	await tween.finished
+	tween = get_tree().create_tween()
+	tween.set_parallel(true)
+	tween.tween_property(system_message, "position:x", end_x, 1).from(mid_x)
+	tween.tween_property(system_message,"modulate",Color(1,1,1,0),1).from(Color(1,1,1,1))
+	await tween.finished
+	_on_message_timer_timeout()
+	
+	
+	
+	
+
 
 func toggle_system_message():
 	system_message.visible=not system_message.visible
