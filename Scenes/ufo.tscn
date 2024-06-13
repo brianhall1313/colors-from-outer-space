@@ -1,11 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://ymp4l8j8ftwf"]
+[gd_scene load_steps=6 format=3 uid="uid://ymp4l8j8ftwf"]
 
 [ext_resource type="Script" path="res://Scenes/ufo.gd" id="1_56dt4"]
 [ext_resource type="Texture2D" uid="uid://nfix0qul73js" path="res://Textures/invader_frame.png" id="2_6b24r"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_w82he"]
-atlas = ExtResource("2_6b24r")
-region = Rect2(48, 0, 16, 20)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yhtgw"]
 atlas = ExtResource("2_6b24r")
@@ -14,9 +10,6 @@ region = Rect2(48, 0, 16, 16)
 [sub_resource type="SpriteFrames" id="SpriteFrames_0w0mu"]
 animations = [{
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_w82he")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_yhtgw")
 }],

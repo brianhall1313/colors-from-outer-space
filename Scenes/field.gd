@@ -49,9 +49,8 @@ var next:String = "right"
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	connect_signal_bus()
-	level_setup()
-	timer.start()
-	ufo_delay.start()
+	update_ui()
+	new_level()
 	
 
 
@@ -84,9 +83,9 @@ func update_ui():
 
 
 func game_over():
-	print("Game Over Sucker")
 	full_stop()
 	Global.change_state("dead")
+	ui.game_over(points)
 
 
 func full_stop():
@@ -103,6 +102,11 @@ func toggle_pause():
 	#timer.paused = not timer.paused
 	#for enemy in enemy_manager.get_children():
 		#enemy.pause()
+
+
+func new_level():
+	var new_message:String="New Stage:\nLevel "+str(level+1)
+	ui.message_received(new_message)
 
 
 
@@ -123,6 +127,7 @@ func level_setup():
 	next=default_next
 	count=0
 	direction = "down"
+	ufo_delay.start()
 
 
 
@@ -151,7 +156,8 @@ func has_won():
 		level+=1
 		print("YOU WIN SUCKAH!")
 		Global.change_state("setup")
-		level_setup()
+		ufo_delay.stop()
+		new_level()
 
 
 func player_death():
@@ -265,3 +271,7 @@ func _on_ufo_delay_timeout():
 func player_damage():
 	update_ui()
 	$player_damage.play()
+
+
+func _on_ui_end():
+	level_setup()

@@ -14,8 +14,9 @@ func _process(delta):
 	if Global.current_state=="play" or Global.current_state=="setup":
 		position.y += delta*SPEED
 
-func change_color(color:String):
-	modulate=Color(color)
+func change_color(_color:String):
+	#we will do something with this later
+	modulate=Color("white")
 
 
 

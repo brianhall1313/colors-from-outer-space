@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://dts22loe15w4w"]
+[gd_scene load_steps=9 format=3 uid="uid://dts22loe15w4w"]
 
 [ext_resource type="Script" path="res://Scenes/main.gd" id="1_nmyij"]
 [ext_resource type="Texture2D" uid="uid://0ueqar2wegc" path="res://Textures/SpaceInvaders_Background.png" id="2_fkgvv"]
 [ext_resource type="Theme" uid="uid://buf711m5wbp58" path="res://Resources/space.tres" id="2_l468g"]
 [ext_resource type="FontFile" uid="uid://dimwslcuyavan" path="res://Resources/Tiny5-Regular.ttf" id="4_0gjm2"]
 [ext_resource type="Material" uid="uid://d0p11dbps25br" path="res://Resources/rainbow_beam.tres" id="4_w274j"]
+[ext_resource type="AudioStream" uid="uid://cdaxkiwuxn46c" path="res://Sound/Voxel Revolution-by-Kevin-Macleod.wav" id="6_4kshr"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kromj"]
 bg_color = Color(0.451019, 0.548877, 0.87556, 1)
@@ -115,7 +116,23 @@ vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="Control/how to play/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 35
+text = "Those pesky aliens are at it again!
+ You can destroy them by hitting 
+them with the same color of light they are.
+1/z Changes the laser to red
+2/x Changes the laser to blue
+3/c Changes the laser to yellow
+Space fires laser
+esc pauses
+UFOs are worth a lot of points and 
+drop a powerup when destroyed
+powerups:
+Repair Kit: Heals HP to full
+Rainbow Laser Core: 
+destroys enemies in one hit for 10 secs
+
+Don't let the aliens land!"
 horizontal_alignment = 1
 
 [node name="how_to_play_button_back" type="Button" parent="Control/how to play/VBoxContainer"]
@@ -157,6 +174,10 @@ https://pr0t34n.itch.io/
 Assets:
 https://sumo-studios.itch.io/
 https://comp3interactive.itch.io/
+Music and sound:
+Kevin Macleod
+https://happysoulmusic.com/kevin-macleod/
+https://pixabay.com/users/pixabay-1/
 "
 horizontal_alignment = 1
 
@@ -170,6 +191,7 @@ theme_override_font_sizes/font_size = 50
 text = "Back"
 
 [node name="background_music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_4kshr")
 autoplay = true
 
 [connection signal="button_up" from="Control/VBoxContainer/VBoxContainer/New Game" to="." method="_on_new_game_button_up"]
