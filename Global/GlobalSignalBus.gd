@@ -12,4 +12,3 @@ signal repair
 signal rainbow
 signal score(points_scored:int)
 signal ufo_death(position)
-

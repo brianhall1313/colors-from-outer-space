@@ -1,4 +1,4 @@
-/* 
+/*
 @LURGX 2024 ghost shine
 */
 shader_type canvas_item;
@@ -53,7 +53,7 @@ void fragment() {
 
 	if (shain == true && onecolor == false){
 		COLOR = mix(color,animated_line_color, outline + color.a);
-		
+
 	}
 	else if (shain == false && onecolor == false){
 		COLOR = mix(color,animated, outline + color.a);

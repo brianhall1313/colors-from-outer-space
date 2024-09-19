@@ -168,6 +168,7 @@ text = "Made for Mini Jam 160:
  Light
 Limitation:
 Speed is key
+Engine: Godot 4
 Designer/Programmer/Some Assets
 Brian Hall
 https://pr0t34n.itch.io/
@@ -180,6 +181,13 @@ https://happysoulmusic.com/kevin-macleod/
 https://pixabay.com/users/pixabay-1/
 "
 horizontal_alignment = 1
+
+[node name="LinkButton" type="LinkButton" parent="Control/credits/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+text = "Godot License"
+uri = "https://godotengine.org/license/"
 
 [node name="credits_back" type="Button" parent="Control/credits/VBoxContainer"]
 custom_minimum_size = Vector2(200, 75)
